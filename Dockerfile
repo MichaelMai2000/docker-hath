@@ -11,10 +11,8 @@ ENV HatH_DOWNLOAD_SHA256 1ac731049a3d6f860f897430bc0ab043e37d5f045c990fac214b680
 ENV HatH_USER hath
 ENV HatH_PATH "/home/$HatH_USER/client"
 ENV HatH_ARCHIVE hath.zip
-
-ENV JAVA /opt/jdk/bin/java
-ENV JAVA_ARGS -jar $HATH
-ENV HATH_JAR HentaiAtHome.jar
+ENV HatH_JAR HentaiAtHome.jar
+ENV HatH_ARGS --use_more_memory --disable_logging
 
 # Container Setup
 RUN adduser -D "$HatH_USER" && \
@@ -37,4 +35,4 @@ EXPOSE 4284
 
 VOLUME "$HatH_PATH/data" "$HatH_PATH/downloaded"
 
-CMD nohup $JAVA $JAVA_ARGS $HATH_ARGS > /dev/null 2>&1 &
+CMD java -jar "$HatH_JAR" "$HatH_ARGS"
