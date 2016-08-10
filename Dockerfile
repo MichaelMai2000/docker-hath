@@ -11,8 +11,9 @@ ENV HatH_DOWNLOAD_SHA256 1ac731049a3d6f860f897430bc0ab043e37d5f045c990fac214b680
 ENV HatH_USER hath
 ENV HatH_PATH "/home/$HatH_USER/client"
 ENV HatH_ARCHIVE hath.zip
+ENV HatH_PORT 4915
 ENV HatH_JAR HentaiAtHome.jar
-ENV HatH_ARGS --use_more_memory --disable_logging
+ENV HatH_ARGS --use_more_memory --disable_logging --port "$HatH_PORT"
 
 # Container Setup
 RUN adduser -D "$HatH_USER" && \
@@ -31,7 +32,7 @@ RUN chmod -R 775 "$HatH_PATH"
 WORKDIR "$HatH_PATH"
 
 # Expose the port
-EXPOSE 4284
+EXPOSE "$HatH_PORT"
 
 VOLUME ["$HatH_PATH/cache", "$HatH_PATH/data", "$HatH_PATH/downloaded", "$HatH_PATH/hathdl"]
 
