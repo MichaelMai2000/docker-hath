@@ -36,4 +36,4 @@ EXPOSE "$HatH_PORT"
 
 VOLUME ["$HatH_PATH/cache", "$HatH_PATH/data", "$HatH_PATH/downloaded", "$HatH_PATH/hathdl"]
 
-CMD java -jar "$HatH_JAR" "$HatH_ARGS"
+CMD java -jar "$HatH_JAR"
